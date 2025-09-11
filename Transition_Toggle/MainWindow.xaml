@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <CheckBox HorizontalAlignment="Center"/>
+        <StackPanel>
+            
+            <CheckBox HorizontalAlignment="Center"/>
+            <CheckBox HorizontalAlignment="Center"/>
+            <CheckBox HorizontalAlignment="Center"/>
+            <CheckBox HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Window>
