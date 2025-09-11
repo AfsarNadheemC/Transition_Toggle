@@ -13,6 +13,10 @@
             <CheckBox HorizontalAlignment="Center"/>
             <CheckBox HorizontalAlignment="Center"/>
             <CheckBox HorizontalAlignment="Center"/>
+
+            <RadioButton HorizontalAlignment="Center"/>
+            <RibbonRadioButton HorizontalAlignment="Center"/>
+
         </StackPanel>
     </Grid>
 </Window>
