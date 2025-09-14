@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Transition_Toggle"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1000" Width="562">
     <Window.Resources>
+
+        <SolidColorBrush x:Key="DarkBlue" Color="#090040"/>
+        <Color x:Key="DarkBlueColor" >
+            #090040
+        </Color>
+
+        <SolidColorBrush x:Key="DarkViolet" Color="#441752"/>
+        <Color x:Key="DarkVioletColor" >
+            #441752
+        </Color>
+
+        <SolidColorBrush x:Key="DarkGreen" Color="#1C352D"/>
+        <Color x:Key="DarkGreenColor" >
+            #1C352D
+        </Color>
+
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -25,7 +41,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121"/>
@@ -45,7 +61,7 @@
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -67,6 +83,7 @@
 
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="Foreground" Value="WhiteSmoke"/>
                             </Trigger>
 
                         </ControlTemplate.Triggers>
@@ -74,7 +91,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
 
         <Style x:Key="TransitionRadio2" TargetType="{x:Type RadioButton}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -84,7 +101,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -105,7 +122,7 @@
                             </Trigger>
 
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Foreground" Value="DarkMagenta"/>
+                                <Setter Property="Foreground" Value="{StaticResource DarkViolet}"/>
                             </Trigger>
 
                         </ControlTemplate.Triggers>
@@ -113,18 +130,247 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+        <Style x:Key="FocusVisual1">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="OptionMarkFocusVisual1">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="14,0,0,0" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#FFF3F9FF"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FF5593FF"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#FFD9ECFF"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FF3C77DD"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF707070"/>
+        <Style x:Key="FlowToggle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+            <Setter Property="Background" Value="{StaticResource DarkBlue}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border Width="240" Height="60" CornerRadius="30" Background="WhiteSmoke"  >
+
+                            <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border x:Name="Slider" HorizontalAlignment="Left" Margin="1" Grid.ColumnSpan="2" Width="116" CornerRadius="28" Background="#090040" >
+                                    <Border.RenderTransform>
+
+                                        <TranslateTransform x:Name="SliderTransform" X="0" />
+                                    </Border.RenderTransform>
+                                </Border>
+
+
+
+                                <ContentPresenter x:Name="c1" Grid.Column="0" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+
+                                <TextBlock Foreground="{TemplateBinding Background}" x:Name="c2" Text="{TemplateBinding Tag}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            
+                            <EventTrigger RoutedEvent="CheckBox.Checked" >
+                                <BeginStoryboard>
+                                    <Storyboard>
+
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="Foreground.Color"
+                                            To="{StaticResource DarkBlueColor }"
+                                            Duration="0:0:0.4"
+                                            />
+
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="Background.Color"
+                                            To="WhiteSmoke"
+                                            Duration="0:0:0.4"
+                                            />
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="SliderTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="15"
+                                            Duration="0:0:0.1"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Slider"
+                                            Storyboard.TargetProperty="Width"
+                                            To="131"
+                                            Duration="0:0:0.1"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="SliderTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="135"
+                                            Duration="0:0:0.3"
+                                            BeginTime="0:0:0.1"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Slider"
+                                            Storyboard.TargetProperty="Width"
+                                            To="101"
+                                            Duration="0:0:0.3"
+                                            BeginTime="0:0:0.1"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="SliderTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="122"
+                                            Duration="0:0:0.1"
+                                            BeginTime="0:0:0.4"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Slider"
+                                            Storyboard.TargetProperty="Width"
+                                            To="116"
+                                            Duration="0:0:0.1"
+                                            BeginTime="0:0:0.4"
+                                            />
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="CheckBox.Unchecked">
+                                <BeginStoryboard>
+
+                                    <Storyboard>
+
+
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="Background.Color"
+                                            To="{StaticResource  DarkBlueColor}"
+                                            Duration="0:0:0.4"
+                                            />
+
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="Foreground.Color"
+                                            To="WhiteSmoke"
+                                            Duration="0:0:0.4"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="SliderTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="105"
+                                            Duration="0:0:0.1"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Slider"
+                                            Storyboard.TargetProperty="Width"
+                                            To="131"
+                                            Duration="0:0:0.1"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="SliderTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="0"
+                                            Duration="0:0:0.3"
+                                            BeginTime="0:0:0.1"
+                                            />
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Slider"
+                                            Storyboard.TargetProperty="Width"
+                                            To="101"
+                                            Duration="0:0:0.3"
+                                            BeginTime="0:0:0.1"
+                                            />
+
+
+                                        <!--<DoubleAnimation 
+                                            Storyboard.TargetName="SliderTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="120"
+                                            Duration="0:0:0.1"
+                                            BeginTime="0:0:0.4"
+                                            />-->
+
+
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Slider"
+                                            Storyboard.TargetProperty="Width"
+                                            To="116"
+                                            Duration="0:0:0.1"
+                                            BeginTime="0:0:0.4"
+                                            />
+
+                                    </Storyboard>
+
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
-    <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <Grid Background="WhiteSmoke">
+
+        <Border Margin="40,80" Background="Beige"  CornerRadius="50">
+            <Border.Effect >
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="0" Color="Black" Opacity="0.5"/>
+            </Border.Effect>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
 
-        <Border Margin="10"  Background="Transparent" Height="70" Width="380" CornerRadius="35" Grid.Row="0" >
 
 
             <Border Height="50" Width="360" Margin="10" CornerRadius="25" Background="White">
@@ -139,65 +385,101 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <Border x:Name="Slider" Width="110" Height="41" CornerRadius="20" Background="LightGray" >
+                    <Border x:Name="Slider" Width="110" Height="41" CornerRadius="20" Background="{StaticResource DarkGreen}" >
                         <Border.Effect>
                             <DropShadowEffect Color="Black" Direction="0" ShadowDepth="0" Opacity="0.2" BlurRadius="5"/>
                         </Border.Effect>
                         <Border.RenderTransform>
 
-                            <TranslateTransform x:Name="SliderTransform" X="60" />
+                            <TranslateTransform x:Name="SliderTransform" X="0" />
                         </Border.RenderTransform>
                     </Border>
 
-                    <RadioButton Style="{DynamicResource TransitionRadio}" Grid.Column="0" Content="One">
+                    <RadioButton Style="{DynamicResource TransitionRadio}" Grid.Column="0" Content="Feel">
                         <RadioButton.Triggers>
                             <EventTrigger RoutedEvent="RadioButton.Checked">
 
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
-                                                Storyboard.TargetName="SliderTransform"
-                                                Storyboard.TargetProperty="X"
-                                                To="0"
-                                                Duration="0:0:0.3"
-                                                />
+                                                    Storyboard.TargetName="SliderTransform"
+                                                    Storyboard.TargetProperty="X"
+                                                    To="0"
+                                                    Duration="0:0:0.3"
+                                                    />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
                         </RadioButton.Triggers>
                     </RadioButton>
-                    <RadioButton Grid.Column="1" Style="{StaticResource TransitionRadio}" Content="Two" >
+                    <RadioButton Grid.Column="1" Style="{StaticResource TransitionRadio}" Content="The" >
                         <RadioButton.Triggers>
                             <EventTrigger RoutedEvent="RadioButton.Checked">
 
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
-                                                Storyboard.TargetName="SliderTransform"
-                                                Storyboard.TargetProperty="X"
-                                                To="120"
-                                                Duration="0:0:0.3"
-                                                />
+                                                    Storyboard.TargetName="SliderTransform"
+                                                    Storyboard.TargetProperty="X"
+                                                    To="120"
+                                                    Duration="0:0:0.3"
+                                                    />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
                         </RadioButton.Triggers>
                     </RadioButton>
-                    <RadioButton Grid.Column="2" Style="{StaticResource TransitionRadio}" Content="Three" >
+                    <RadioButton Grid.Column="2" Style="{StaticResource TransitionRadio}" Content="Flow" >
                         <RadioButton.Triggers>
                             <EventTrigger RoutedEvent="RadioButton.Checked">
 
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
-                                                Storyboard.TargetName="SliderTransform"
-                                                Storyboard.TargetProperty="X"
-                                                To="240"
-                                                Duration="0:0:0.3"
-                                                />
+                                                    Storyboard.TargetName="SliderTransform"
+                                                    Storyboard.TargetProperty="X"
+                                                    To="240"
+                                                    Duration="0:0:0.3"
+                                                    />
+
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="FlowToggleBorder"
+                                            Storyboard.TargetProperty="Height"
+                                            To="200"
+                                            Duration="0:0:0.3"
+                                        
+                                            />
+
+
+
                                     </Storyboard>
+
+
                                 </BeginStoryboard>
+
+
                             </EventTrigger>
+
+                            <EventTrigger RoutedEvent="RadioButton.Unchecked">
+
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="FlowToggleBorder"
+                                            Storyboard.TargetProperty="Height"
+                                            To="0"
+                                            Duration="0:0:0.3"
+                                        
+                                            />
+
+                                    </Storyboard>
+
+
+                                </BeginStoryboard>
+
+
+                            </EventTrigger>
+
                         </RadioButton.Triggers>
                     </RadioButton>
 
@@ -205,86 +487,146 @@
 
                 </Grid>
             </Border>
-        </Border>
+
+            <Border x:Name="FlowToggleBorder" Grid.Row="1" Height="200"  Width="280" Background="CadetBlue" CornerRadius="40">
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="0" Color="Black"  Opacity="0.5" />
+                    </Border.Effect>
+                
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <CheckBox Style="{StaticResource FlowToggle}" Grid.Row="0" Content="With" Tag="Toggles" />
+                        <CheckBox Style="{StaticResource FlowToggle}" Grid.Row="1" Content="Code on" Tag="Git Hub"  >
+                            <CheckBox.Triggers>
+                                
+                                <EventTrigger RoutedEvent="CheckBox.Checked">
+                                    <BeginStoryboard >
+                                        <Storyboard >
+                                            <DoubleAnimation
+                                            Storyboard.TargetName="TransitionBorder"
+                                            Storyboard.TargetProperty="Height"
+                                            To="200"
+                                            Duration="0:0:0.3"
+                                        
+                                            />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                
+                                
+                                <EventTrigger RoutedEvent="CheckBox.Unchecked">
+                                    <BeginStoryboard >
+                                        <Storyboard >
+                                            <DoubleAnimation
+                                            Storyboard.TargetName="TransitionBorder"
+                                            Storyboard.TargetProperty="Height"
+                                            To="0"
+                                            Duration="0:0:0.3"
+                                        
+                                            />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                
+                            </CheckBox.Triggers>
+                        </CheckBox>
+
+
+                    </Grid>
+
+            </Border>
+
+                <Border x:Name="TransitionBorder" Grid.Row="2" Background="MistyRose" Width="360" VerticalAlignment="Bottom" Height="200" CornerRadius="50,50,0,0">
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="0" Color="Black" Opacity="0.5"/>
+                    </Border.Effect>
+                    
+                    <Grid  Width="360" Height="50" VerticalAlignment="Top" Margin="0,80,0,0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle x:Name="BaseLine" Height="5" RadiusX="2.5" RadiusY="2.5" Margin="20,8" Fill="{StaticResource DarkViolet}" VerticalAlignment="Bottom">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="Black" Direction="0" ShadowDepth="0" Opacity="0.2" BlurRadius="5"/>
+                            </Rectangle.Effect>
+                            <Rectangle.RenderTransform>
+
+                                <TranslateTransform x:Name="BaseLineTransform" X="0" />
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+
+                        <RadioButton Style="{StaticResource TransitionRadio2}" Grid.Column="0" Content="Check">
+                            <RadioButton.Triggers>
+                                <EventTrigger RoutedEvent="RadioButton.Checked">
+
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                            Storyboard.TargetName="BaseLineTransform"
+                                                            Storyboard.TargetProperty="X"
+                                                            To="0"
+                                                            Duration="0:0:0.3"
+                                                            />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </RadioButton.Triggers>
+                        </RadioButton>
+
+                        <RadioButton Grid.Column="1" Style="{StaticResource TransitionRadio2}" Content="Description / "  >
+                            <RadioButton.Triggers>
+                                <EventTrigger RoutedEvent="RadioButton.Checked">
+
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                            Storyboard.TargetName="BaseLineTransform"
+                                                            Storyboard.TargetProperty="X"
+                                                            To="120"
+                                                            Duration="0:0:0.3"
+                                                            />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </RadioButton.Triggers>
+                        </RadioButton>
+
+                        <RadioButton Grid.Column="2" Style="{StaticResource TransitionRadio2}" Content="Caption" >
+                            <RadioButton.Triggers>
+                                <EventTrigger RoutedEvent="RadioButton.Checked">
+
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                            Storyboard.TargetName="BaseLineTransform"
+                                                            Storyboard.TargetProperty="X"
+                                                            To="240"
+                                                            Duration="0:0:0.3"
+                                                            />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </RadioButton.Triggers>
+                        </RadioButton>
 
 
 
-        <Grid Grid.Row="2" Width="360" Height="50" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+                    </Grid>
+                </Border>
 
-            <Rectangle x:Name="BaseLine" Height="5" RadiusX="2.5" RadiusY="2.5" Margin="20,10" Fill="DarkMagenta" VerticalAlignment="Bottom">
-                <Rectangle.Effect>
-                    <DropShadowEffect Color="Black" Direction="0" ShadowDepth="0" Opacity="0.2" BlurRadius="5"/>
-                </Rectangle.Effect>
-                <Rectangle.RenderTransform>
-
-                    <TranslateTransform x:Name="BaseLineTransform" X="0" />
-                </Rectangle.RenderTransform>
-            </Rectangle>
-
-            <RadioButton Style="{DynamicResource TransitionRadio2}" Grid.Column="0" Content="One">
-                <RadioButton.Triggers>
-                    <EventTrigger RoutedEvent="RadioButton.Checked">
-
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation
-                                                Storyboard.TargetName="BaseLineTransform"
-                                                Storyboard.TargetProperty="X"
-                                                To="0"
-                                                Duration="0:0:0.3"
-                                                />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </RadioButton.Triggers>
-            </RadioButton>
-            
-            <RadioButton Grid.Column="1" Style="{StaticResource TransitionRadio2}" Content="Two"  >
-                <RadioButton.Triggers>
-                    <EventTrigger RoutedEvent="RadioButton.Checked">
-
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation
-                                                Storyboard.TargetName="BaseLineTransform"
-                                                Storyboard.TargetProperty="X"
-                                                To="120"
-                                                Duration="0:0:0.3"
-                                                />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </RadioButton.Triggers>
-            </RadioButton>
-            
-            <RadioButton Grid.Column="2" Style="{StaticResource TransitionRadio2}" Content="Three" >
-                <RadioButton.Triggers>
-                    <EventTrigger RoutedEvent="RadioButton.Checked">
-
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation
-                                                Storyboard.TargetName="BaseLineTransform"
-                                                Storyboard.TargetProperty="X"
-                                                To="240"
-                                                Duration="0:0:0.3"
-                                                />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </RadioButton.Triggers>
-            </RadioButton>
 
 
 
         </Grid>
 
-
-
+        </Border>
     </Grid>
 </Window>
